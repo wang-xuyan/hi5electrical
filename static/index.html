@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi5 Electrical</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入 AOS 动画库 -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0d6efd;
+            --dark-navy: #0a192f;
+            --soft-gray: #f8f9fa;
+            --accent-blue: #30d5c8;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* 现代导航栏 */
+        .navbar {
+            backdrop-filter: blur(10px);
+            background-color: #ffffff;
+            padding: 15px 0;
+            transition: all 0.3s;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--dark-navy) !important;
+            margin: 0 12px;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--primary-blue);
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero 部分 */
+        .hero {
+            position: relative;
+            background: var(--dark-navy);
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+            padding-top: 100px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, rgba(10,25,47,0.9) 0%, rgba(13,110,253,0.3) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-img {
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* 通用板块样式 */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        .section-header h2 {
+            font-weight: 800;
+            font-size: 2.5rem;
+            color: var(--dark-navy);
+            position: relative;
+            display: inline-block;
+        }
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--primary-blue);
+            margin: 10px auto;
+        }
+
+        /* 卡片设计 */
+        .card {
+            border: none;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .card-img-top {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        /* 列表样式 */
+        .about-list li {
+            padding: 8px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+        .about-list li::before {
+            content: '\26A1';
+            margin-right: 12px;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        /* 联系信息卡片 */
+        .contact-info-card {
+            background: linear-gradient(135deg, var(--dark-navy), #1a3a63);
+            color: white;
+            border-radius: 20px;
+            padding: 45px;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #050c16;
+            color: #adb5bd;
+            padding: 80px 0 20px;
+        }
+        .footer h3, .footer h4 {
+            color: white;
+            font-weight: 700;
+        }
+        .footer-link {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .btn-primary {
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <img src="images/logo.jpg" alt="Logo" height="110">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主页部分 -->
+    <div id="home" class="hero">
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h1 class="display-3 fw-bold mb-4">Welcome to <br>Hi5 Electrical</h1>
+                    <p class="lead mb-5 opacity-75">Your trusted partner for residential, commercial, and industrial electrical solutions.</p>
+                    <a href="#contact" class="btn btn-primary btn-lg shadow">Contact Us</a>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0 text-center" data-aos="fade-left">
+                    <img src="images/hero_1_1.jpg" alt="Banner" class="img-fluid hero-img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 关于我们部分 -->
+    <div id="about" class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>About Us</h2>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="pe-lg-5">
+                        <img src="images/hero_hello.jpg" alt="团队照片" class="img-fluid rounded-4 shadow-lg">
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <h3 class="fw-bold mb-3">Introduction</h3>
+                    <p>Hi5 Electrical Ltd is a trusted electrical service provider delivering high-quality solutions across the residential, commercial, and industrial sectors. We specialise in electrical installation, maintenance, energy solutions, and smart automation, with a strong focus on safety, reliability, and quality workmanship.
+</p>
+                    <p>Our director is also a director of Star Fang Electrical, an approved ICT contractor for the Ministry of Education New Zealand, bringing extensive experience in education sector projects and large-scale infrastructure delivery.</p>
+
+                    <h3 class="fw-bold mt-4 mb-3">Mission</h3>
+                    <ul class="list-unstyled about-list">
+                        <li>Delivering safe, reliable, and high-quality electrical solutions</li>
+                        <li>Providing exceptional service with attention to detail</li>
+                        <li>Building long-term relationships based on trust and performance</li>
+                    </ul>
+
+                    <h3 class="fw-bold mt-4 mb-3">Vision</h3>
+                    <ul class="list-unstyled about-list">
+                        <li>To become a leading provider of electrical and infrastructure solutions</li>
+                        <li>To drive innovation, efficiency, and sustainability in every project</li>
+                        <li>To exceed client expectations through quality and professionalism</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 服务部分 -->
+    <div id="services" class="section bg-light">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Services</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card p-3">
+                        <img src="images/hero_2_1.jpg" class="card-img-top rounded shadow-sm" alt="Electrical Installation">
+                        <div class="card-body">
+                            <h4 class="fw-bold">Electrical Installation</h4>
+                            <p class="text-muted small">Professional electrical installations for residential, commercial, and industrial projects, including new builds, renovations, and system upgrades.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card p-3">
+                        <img src="images/hero_2_2.jpg" class="card-img-top rounded shadow-sm" alt="Maintenance & Repairs">
+                        <div class="card-body">
+                            <h4 class="fw-bold">Maintenance & Repairs</h4>
+                            <p class="text-muted small">Reliable fault finding, repairs, and routine maintenance to keep your electrical systems safe and operating efficiently.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card p-3">
+                        <img src="images/hero_2_3.jpg" class="card-img-top rounded shadow-sm" alt="Energy Solutions">
+                        <div class="card-body">
+                            <h4 class="fw-bold">Energy Solutions</h4>
+                            <p class="text-muted small">Energy-efficient solutions including LED lighting upgrades and solar power systems to reduce costs and improve sustainability.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card p-3">
+                        <img src="images/hero_2_4.jpg" class="card-img-top rounded shadow-sm" alt="Security & Safety">
+                        <div class="card-body">
+                            <h4 class="fw-bold">Security & Safety Systems</h4>
+                            <p class="text-muted small">Installation of CCTV, alarm systems, and access control to protect your property and ensure safety.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card p-3">
+                        <img src="images/hero_2_5.jpg" class="card-img-top rounded shadow-sm" alt="Smart Automation">
+                        <div class="card-body">
+                            <h4 class="fw-bold">Smart Automation & Control</h4>
+                            <p class="text-muted small">Smart home and building automation systems, including lighting and HVAC control, for improved comfort and efficiency.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card p-3">
+                        <img src="images/hero_2_6.jpg" class="card-img-top rounded shadow-sm" alt="Consulting Services">
+                        <div class="card-body">
+                            <h4 class="fw-bold">Consulting Services</h4>
+                            <p class="text-muted small">Professional advice on electrical design, compliance, and project planning to ensure efficient and reliable outcomes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 项目部分 -->
+    <div id="projects" class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Our Recent Projects</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in-up">
+                    <div class="card">
+                        <img src="images/hero_3_1.jpg" class="card-img-top" alt="Maxim Hotel">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Maxim Hotel Electrical Installation</h5>
+                            <p class="text-muted small">Complete electrical installation for a hotel project, including lighting, power distribution, and switchboard setup.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="card">
+                        <img src="images/hero_3_2.jpg" class="card-img-top" alt="Westpac Bank">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Westpac Bank Fit-out Tokoroa</h5>
+                            <p class="text-muted small">Electrical installation for a commercial bank fit-out, including lighting, power outlets, BMS systems.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-delay="200">
+                    <div class="card">
+                        <img src="images/hero_3_3.jpg" class="card-img-top" alt="Industrial Factory">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Industrial Factory Electrical System</h5>
+                            <p class="text-muted small">Installation of electrical systems for an industrial facility, including power distribution, machinery connections, and switchboard configuration.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in-up">
+                    <div class="card">
+                        <img src="images/hero_3_4.jpg" class="card-img-top" alt="Lake Road">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Combined Retailer Shops and Apartments</h5>
+                            <p class="text-muted small">Location at 153 Lake Road, Takapuna.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="card">
+                        <img src="images/hero_3_5.jpg" class="card-img-top" alt="Schools">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Primary School Projects</h5>
+                            <p class="text-muted small">Electrical service for Glendowie Primary School in 2024; Electrical service for Sir Douglas Bader Intermediate School in 2025; Electrical service for Papatoetoe East School in 2025; Electrical service for Finlayson Park School in 2025;</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-delay="200">
+                    <div class="card">
+                        <img src="images/hero_3_6.jpg" class="card-img-top" alt="Retirement Village">
+                        <div class="card-body">
+                            <h5 class="fw-bold">W&H Retirement Village Project</h5>
+                            <p class="text-muted small">Professional electrical infrastructure and installation for retirement residential complex.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in-up">
+                    <div class="card">
+                        <img src="images/hero_3_7.jpg" class="card-img-top" alt="Motel Upgrade">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Hideaway Lodge Motel projects (220kW MSB upgrade)</h5>
+                            <p class="text-muted small">Major switchboard upgrade and electrical system renovation for hospitality facility.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 联系我们部分 -->
+    <div id="contact" class="section bg-light">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10" data-aos="flip-up">
+                    <div class="contact-info-card shadow-lg">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h3 class="mb-4">Contact Information</h3>
+                                <p class="opacity-75 mb-4">If you have any questions or project enquiries, please feel free to contact us. Our team will get back to you as soon as possible.</p>
+                                <div class="mb-4">
+                                    <ul class="list-unstyled fs-5">
+                                        <li class="mb-3"><strong>Company:</strong>Hi5 Electrical Ltd</li>
+                                        <li class="mb-3"><strong>Address:</strong>2/14 Harrison RoadMount Wellington, Auckland 1060</li>
+                                        <li class="mb-3"><strong>Email: </strong>info@hi5electrical.co.nz</li>
+                                        <li class="mb-3"><strong>Phone:</strong>+64 27 253 1888</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="border-top border-secondary mt-5 pt-4 text-center">
+                <p class="small">&copy; 2026 Hi5 Electrical Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                nav.style.padding = '8px 0';
+                nav.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.padding = '15px 0';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
